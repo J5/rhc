@@ -1,3 +1,4 @@
+require 'uri'
 
 module RHC
   module Rest
@@ -24,7 +25,10 @@ module RHC
         @scale_min = args[:scale_min] || args["scale_min"]
         @scale_max = args[:scale_max] || args["scale_max"]
         @links = args[:links] || args["links"]
-        
+      end
+
+      def host
+        @host ||= URI(@app_url).host
       end
 
       #Add Cartridge
